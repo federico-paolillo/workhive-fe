@@ -1,11 +1,11 @@
-import EventsList from "@work-hive/app/EventsList";
+import { fetchEvents } from "@work-hive/api/client";
+import { EventsList } from "@work-hive/components/EventsList";
 
-/* @ts-expect-error Async Server Component */
-
-export default function Home() {
+export default async function Home() {
+  const events = await fetchEvents();
   return (
     <main>
-      <EventsList />
+      <EventsList events={events} />
     </main>
   );
 }

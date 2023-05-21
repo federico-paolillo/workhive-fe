@@ -2,6 +2,7 @@ import * as grpc from "@grpc/grpc-js";
 import { WHEventClient } from "@work-hive/grpc/workhive_grpc_pb";
 import {
   GetEventFilterRequest,
+  GetEventRequest,
   WHEventReply,
 } from "@work-hive/grpc/workhive_pb";
 
@@ -17,7 +18,6 @@ export async function fetchEvents(): Promise<WHEventReply[]> {
 
   const eventsStream = workhiveClient.getEventStream(getEventsRequest);
 
-  console.log("Ooooooook");
   return new Promise<WHEventReply[]>((resolve, reject) => {
     const eventsReceived: WHEventReply[] = [];
 
@@ -29,5 +29,21 @@ export async function fetchEvents(): Promise<WHEventReply[]> {
     });
 
     eventsStream.on("end", () => resolve(eventsReceived));
+  });
+}
+
+export async function fetchEvent(id: string): Promise<WHEventReply> {
+  const getEventRequest = new GetEventRequest();
+
+  getEventRequest.setId(id);
+
+  return new Promise<WHEventReply>((resolve, reject) => {
+    workhiveClient.getEvent(getEventRequest, (error, resp) => {
+      if (error) {
+        reject(error);
+      } else {
+        resolve(resp);
+      }
+    });
   });
 }
