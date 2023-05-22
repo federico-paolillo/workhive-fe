@@ -1,12 +1,12 @@
 "use client";
 
 import { FormEvent, useState } from "react";
-import { EventToEdit } from "@work-hive/models/EventToEdit";
 import { toYyyymmdd } from "@work-hive/utils/toYyyymmdd";
+import { EditableEvent } from "@work-hive/models/EditableEvent";
 
 export type EventFormProps = {
-  event: EventToEdit;
-  onSubmit: (event: EventToEdit) => void;
+  event: EditableEvent;
+  onSubmit: (event: EditableEvent) => void;
 };
 
 export function EventForm({ event, onSubmit }: EventFormProps) {
