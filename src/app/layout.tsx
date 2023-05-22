@@ -1,3 +1,5 @@
+import './global.css'
+
 export const metadata = {
   title: "Work Hive",
   description: "Work Hive description TBD",

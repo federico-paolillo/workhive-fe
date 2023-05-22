@@ -1,7 +1,7 @@
 "use client";
 
 import { FormEvent, useState } from "react";
-import { toYyyymmdd } from "@work-hive/utils/toYyyymmdd";
+import { toYyyymmdd } from "@work-hive/utils/date";
 import { EditableEvent } from "@work-hive/models/EditableEvent";
 
 export type EventFormProps = {
