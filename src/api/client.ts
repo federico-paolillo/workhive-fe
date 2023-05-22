@@ -6,85 +6,122 @@ import {
   CreateEventRequest,
   GetEventFilterRequest,
   GetEventRequest,
+  JoinEventRequest,
   UpdateEventRequest,
   WHEventReply,
 } from "@work-hive/grpc/workhive_pb";
-import { EventToEdit } from "@work-hive/models/EventToEdit";
+import { EditableEvent } from "@work-hive/models/EditableEvent";
+import { PlainEvent } from "@work-hive/models/PlainEvent";
 
 const workhiveClient = new WHEventClient(
   process.env.WORKHIVE_API_ENDPOINT,
   grpc.credentials.createInsecure()
 );
 
-export async function fetchEvents(): Promise<WHEventReply[]> {
+function toPlainEvent(whEventReply: WHEventReply): PlainEvent {
+  return {
+    id: whEventReply.getId(),
+    description: whEventReply.getDescription(),
+    location: whEventReply.getLocation(),
+    maxGuest: 0,
+    eventType: whEventReply.getEventtype(),
+    startDateTime: whEventReply.getStartdatetime(),
+    endDateTime: whEventReply.getEnddatetime(),
+  };
+}
+
+export async function fetchEvents(): Promise<PlainEvent[]> {
   const getEventsRequest = new GetEventFilterRequest();
 
   getEventsRequest.setEventtype(1); //TODO: Where is the enum ?
 
   const eventsStream = workhiveClient.getEventStream(getEventsRequest);
 
-  return new Promise<WHEventReply[]>((resolve, reject) => {
-    const eventsReceived: WHEventReply[] = [];
+  return new Promise<PlainEvent[]>((resolve, reject) => {
+    const eventsReceived: PlainEvent[] = [];
 
-    eventsStream.on("data", (data: WHEventReply) => eventsReceived.push(data));
+    eventsStream.on("data", (data: WHEventReply) =>
+      eventsReceived.push(toPlainEvent(data))
+    );
+
     eventsStream.on("error", (error: Error) => reject(error));
     eventsStream.on("end", () => resolve(eventsReceived));
   });
 }
 
-export async function fetchEvent(id: string): Promise<WHEventReply> {
+export async function fetchEvent(id: string): Promise<PlainEvent> {
   const getEventRequest = new GetEventRequest();
 
   getEventRequest.setId(id);
 
-  return new Promise<WHEventReply>((resolve, reject) => {
+  return new Promise<PlainEvent>((resolve, reject) => {
     workhiveClient.getEvent(getEventRequest, (error, resp) => {
       if (error) {
         reject(error);
       } else {
-        resolve(resp);
+        resolve(toPlainEvent(resp));
       }
     });
   });
 }
 
-export async function createEvent(event: EventToEdit): Promise<WHEventReply> {
+export async function createEvent(event: EditableEvent): Promise<void> {
   const createEventRequest = new CreateEventRequest();
 
   createEventRequest.setDescription(event.description);
   createEventRequest.setEventtype(event.eventType);
   createEventRequest.setLocation(event.location);
   createEventRequest.setMaxguest(event.maxGuest);
-  createEventRequest.setStartdatetime(event.startDateTime);
-  createEventRequest.setEnddatetime(event.endDateTime);
+  createEventRequest.setStartdatetime(event.startDateTime.valueOf());
+  createEventRequest.setEnddatetime(event.endDateTime.valueOf());
 
-  return new Promise<WHEventReply>((resolve, reject) => {
-    workhiveClient.createEvent(createEventRequest, (error, resp) => {
+  return new Promise<void>((resolve, reject) => {
+    workhiveClient.createEvent(createEventRequest, (error, _) => {
       if (error) {
         reject(error);
       } else {
-        resolve(resp);
+        resolve();
       }
     });
   });
 }
 
-export async function updateEvent(event: EventToEdit): Promise<WHEventReply> {
+export async function updateEvent(
+  id: string,
+  event: EditableEvent
+): Promise<void> {
   const updateEventRequest = new UpdateEventRequest();
 
+  updateEventRequest.setId(id);
   updateEventRequest.setDescription(event.description);
   updateEventRequest.setEventtype(event.eventType);
   updateEventRequest.setLocation(event.location);
   updateEventRequest.setMaxguest(event.maxGuest);
-  updateEventRequest.setStartdatetime(event.startDateTime);
-  updateEventRequest.setEnddatetime(event.endDateTime);
+  updateEventRequest.setStartdatetime(event.startDateTime.valueOf());
+  updateEventRequest.setEnddatetime(event.endDateTime.valueOf());
 
-  return new Promise<WHEventReply>((resolve, reject) => {
-    workhiveClient.updateEvent(updateEventRequest, (error, resp) => {
+  return new Promise<void>((resolve, reject) => {
+    workhiveClient.updateEvent(updateEventRequest, (error, _) => {
       if (error) {
         reject(error);
       } else {
-        resolve(resp);
+        resolve();
+      }
+    });
+  });
+}
+
+export async function joinEvent(id: string): Promise<void> {
+  const joinEventRequest = new JoinEventRequest();
+
+  joinEventRequest.setId(id);
+
+  return new Promise((resolve, reject) => {
+    workhiveClient.joinEvent(joinEventRequest, (error, _) => {
+      if (error) {
+        reject(error);
+      } else {
+        resolve();
       }
     });
   });

@@ -13,6 +13,7 @@ import * as google_protobuf_wrappers_pb from "google-protobuf/google/protobuf/wr
 interface IWHEventService extends grpc.ServiceDefinition<grpc.UntypedServiceImplementation> {
     createEvent: IWHEventService_ICreateEvent;
     getEventStream: IWHEventService_IGetEventStream;
+    getEvents: IWHEventService_IGetEvents;
     getEvent: IWHEventService_IGetEvent;
     updateEvent: IWHEventService_IUpdateEvent;
     deleteEvent: IWHEventService_IDeleteEvent;
@@ -36,6 +37,15 @@ interface IWHEventService_IGetEventStream extends grpc.MethodDefinition<workhive
     requestDeserialize: grpc.deserialize<workhive_pb.GetEventFilterRequest>;
     responseSerialize: grpc.serialize<workhive_pb.WHEventReply>;
     responseDeserialize: grpc.deserialize<workhive_pb.WHEventReply>;
+}
+interface IWHEventService_IGetEvents extends grpc.MethodDefinition<workhive_pb.GetEventFilterRequest, workhive_pb.WHEventsReply> {
+    path: "/WHEvent/GetEvents";
+    requestStream: false;
+    responseStream: false;
+    requestSerialize: grpc.serialize<workhive_pb.GetEventFilterRequest>;
+    requestDeserialize: grpc.deserialize<workhive_pb.GetEventFilterRequest>;
+    responseSerialize: grpc.serialize<workhive_pb.WHEventsReply>;
+    responseDeserialize: grpc.deserialize<workhive_pb.WHEventsReply>;
 }
 interface IWHEventService_IGetEvent extends grpc.MethodDefinition<workhive_pb.GetEventRequest, workhive_pb.WHEventReply> {
     path: "/WHEvent/GetEvent";
@@ -79,6 +89,7 @@ export const WHEventService: IWHEventService;
 export interface IWHEventServer extends grpc.UntypedServiceImplementation {
     createEvent: grpc.handleUnaryCall<workhive_pb.CreateEventRequest, workhive_pb.WHEventReply>;
     getEventStream: grpc.handleServerStreamingCall<workhive_pb.GetEventFilterRequest, workhive_pb.WHEventReply>;
+    getEvents: grpc.handleUnaryCall<workhive_pb.GetEventFilterRequest, workhive_pb.WHEventsReply>;
     getEvent: grpc.handleUnaryCall<workhive_pb.GetEventRequest, workhive_pb.WHEventReply>;
     updateEvent: grpc.handleUnaryCall<workhive_pb.UpdateEventRequest, workhive_pb.WHEventReply>;
     deleteEvent: grpc.handleUnaryCall<workhive_pb.DeleteEventRequest, google_protobuf_empty_pb.Empty>;
@@ -91,6 +102,9 @@ export interface IWHEventClient {
     createEvent(request: workhive_pb.CreateEventRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: workhive_pb.WHEventReply) => void): grpc.ClientUnaryCall;
     getEventStream(request: workhive_pb.GetEventFilterRequest, options?: Partial<grpc.CallOptions>): grpc.ClientReadableStream<workhive_pb.WHEventReply>;
     getEventStream(request: workhive_pb.GetEventFilterRequest, metadata?: grpc.Metadata, options?: Partial<grpc.CallOptions>): grpc.ClientReadableStream<workhive_pb.WHEventReply>;
+    getEvents(request: workhive_pb.GetEventFilterRequest, callback: (error: grpc.ServiceError | null, response: workhive_pb.WHEventsReply) => void): grpc.ClientUnaryCall;
+    getEvents(request: workhive_pb.GetEventFilterRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: workhive_pb.WHEventsReply) => void): grpc.ClientUnaryCall;
+    getEvents(request: workhive_pb.GetEventFilterRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: workhive_pb.WHEventsReply) => void): grpc.ClientUnaryCall;
     getEvent(request: workhive_pb.GetEventRequest, callback: (error: grpc.ServiceError | null, response: workhive_pb.WHEventReply) => void): grpc.ClientUnaryCall;
     getEvent(request: workhive_pb.GetEventRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: workhive_pb.WHEventReply) => void): grpc.ClientUnaryCall;
     getEvent(request: workhive_pb.GetEventRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: workhive_pb.WHEventReply) => void): grpc.ClientUnaryCall;
@@ -112,6 +126,9 @@ export class WHEventClient extends grpc.Client implements IWHEventClient {
     public createEvent(request: workhive_pb.CreateEventRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: workhive_pb.WHEventReply) => void): grpc.ClientUnaryCall;
     public getEventStream(request: workhive_pb.GetEventFilterRequest, options?: Partial<grpc.CallOptions>): grpc.ClientReadableStream<workhive_pb.WHEventReply>;
     public getEventStream(request: workhive_pb.GetEventFilterRequest, metadata?: grpc.Metadata, options?: Partial<grpc.CallOptions>): grpc.ClientReadableStream<workhive_pb.WHEventReply>;
+    public getEvents(request: workhive_pb.GetEventFilterRequest, callback: (error: grpc.ServiceError | null, response: workhive_pb.WHEventsReply) => void): grpc.ClientUnaryCall;
+    public getEvents(request: workhive_pb.GetEventFilterRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: workhive_pb.WHEventsReply) => void): grpc.ClientUnaryCall;
+    public getEvents(request: workhive_pb.GetEventFilterRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: workhive_pb.WHEventsReply) => void): grpc.ClientUnaryCall;
     public getEvent(request: workhive_pb.GetEventRequest, callback: (error: grpc.ServiceError | null, response: workhive_pb.WHEventReply) => void): grpc.ClientUnaryCall;
     public getEvent(request: workhive_pb.GetEventRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: workhive_pb.WHEventReply) => void): grpc.ClientUnaryCall;
     public getEvent(request: workhive_pb.GetEventRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: workhive_pb.WHEventReply) => void): grpc.ClientUnaryCall;

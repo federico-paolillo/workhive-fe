@@ -49,17 +49,39 @@ export namespace JoinEventRequest {
     }
 }
 
+export class WHEventsReply extends jspb.Message { 
+    clearEventsList(): void;
+    getEventsList(): Array<WHEventReply>;
+    setEventsList(value: Array<WHEventReply>): WHEventsReply;
+    addEvents(value?: WHEventReply, index?: number): WHEventReply;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): WHEventsReply.AsObject;
+    static toObject(includeInstance: boolean, msg: WHEventsReply): WHEventsReply.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: WHEventsReply, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): WHEventsReply;
+    static deserializeBinaryFromReader(message: WHEventsReply, reader: jspb.BinaryReader): WHEventsReply;
+}
+
+export namespace WHEventsReply {
+    export type AsObject = {
+        eventsList: Array<WHEventReply.AsObject>,
+    }
+}
+
 export class GetEventFilterRequest extends jspb.Message { 
 
     hasStartdatetime(): boolean;
     clearStartdatetime(): void;
-    getStartdatetime(): google_protobuf_timestamp_pb.Timestamp | undefined;
-    setStartdatetime(value?: google_protobuf_timestamp_pb.Timestamp): GetEventFilterRequest;
+    getStartdatetime(): number | undefined;
+    setStartdatetime(value: number): GetEventFilterRequest;
 
     hasEnddatetime(): boolean;
     clearEnddatetime(): void;
-    getEnddatetime(): google_protobuf_timestamp_pb.Timestamp | undefined;
-    setEnddatetime(value?: google_protobuf_timestamp_pb.Timestamp): GetEventFilterRequest;
+    getEnddatetime(): number | undefined;
+    setEnddatetime(value: number): GetEventFilterRequest;
 
     hasLocation(): boolean;
     clearLocation(): void;
@@ -85,8 +107,8 @@ export class GetEventFilterRequest extends jspb.Message {
 
 export namespace GetEventFilterRequest {
     export type AsObject = {
-        startdatetime?: google_protobuf_timestamp_pb.Timestamp.AsObject,
-        enddatetime?: google_protobuf_timestamp_pb.Timestamp.AsObject,
+        startdatetime?: number,
+        enddatetime?: number,
         location?: string,
         organizerid?: string,
         eventtype: number,
@@ -98,16 +120,10 @@ export class WHEventReply extends jspb.Message {
     setId(value: string): WHEventReply;
     getOrganizerid(): string;
     setOrganizerid(value: string): WHEventReply;
-
-    hasStartdatetime(): boolean;
-    clearStartdatetime(): void;
-    getStartdatetime(): google_protobuf_timestamp_pb.Timestamp | undefined;
-    setStartdatetime(value?: google_protobuf_timestamp_pb.Timestamp): WHEventReply;
-
-    hasEnddatetime(): boolean;
-    clearEnddatetime(): void;
-    getEnddatetime(): google_protobuf_timestamp_pb.Timestamp | undefined;
-    setEnddatetime(value?: google_protobuf_timestamp_pb.Timestamp): WHEventReply;
+    getStartdatetime(): number;
+    setStartdatetime(value: number): WHEventReply;
+    getEnddatetime(): number;
+    setEnddatetime(value: number): WHEventReply;
     getLocation(): string;
     setLocation(value: string): WHEventReply;
 
@@ -138,8 +154,8 @@ export namespace WHEventReply {
     export type AsObject = {
         id: string,
         organizerid: string,
-        startdatetime?: google_protobuf_timestamp_pb.Timestamp.AsObject,
-        enddatetime?: google_protobuf_timestamp_pb.Timestamp.AsObject,
+        startdatetime: number,
+        enddatetime: number,
         location: string,
         maxguest?: google_protobuf_wrappers_pb.Int32Value.AsObject,
         description: string,
@@ -149,16 +165,10 @@ export namespace WHEventReply {
 }
 
 export class CreateEventRequest extends jspb.Message { 
-
-    hasStartdatetime(): boolean;
-    clearStartdatetime(): void;
-    getStartdatetime(): google_protobuf_timestamp_pb.Timestamp | undefined;
-    setStartdatetime(value?: google_protobuf_timestamp_pb.Timestamp): CreateEventRequest;
-
-    hasEnddatetime(): boolean;
-    clearEnddatetime(): void;
-    getEnddatetime(): google_protobuf_timestamp_pb.Timestamp | undefined;
-    setEnddatetime(value?: google_protobuf_timestamp_pb.Timestamp): CreateEventRequest;
+    getStartdatetime(): number;
+    setStartdatetime(value: number): CreateEventRequest;
+    getEnddatetime(): number;
+    setEnddatetime(value: number): CreateEventRequest;
     getLocation(): string;
     setLocation(value: string): CreateEventRequest;
     getEventtype(): number;
@@ -183,8 +193,8 @@ export class CreateEventRequest extends jspb.Message {
 
 export namespace CreateEventRequest {
     export type AsObject = {
-        startdatetime?: google_protobuf_timestamp_pb.Timestamp.AsObject,
-        enddatetime?: google_protobuf_timestamp_pb.Timestamp.AsObject,
+        startdatetime: number,
+        enddatetime: number,
         location: string,
         eventtype: number,
         description: string,
@@ -198,13 +208,13 @@ export class UpdateEventRequest extends jspb.Message {
 
     hasStartdatetime(): boolean;
     clearStartdatetime(): void;
-    getStartdatetime(): google_protobuf_timestamp_pb.Timestamp | undefined;
-    setStartdatetime(value?: google_protobuf_timestamp_pb.Timestamp): UpdateEventRequest;
+    getStartdatetime(): number | undefined;
+    setStartdatetime(value: number): UpdateEventRequest;
 
     hasEnddatetime(): boolean;
     clearEnddatetime(): void;
-    getEnddatetime(): google_protobuf_timestamp_pb.Timestamp | undefined;
-    setEnddatetime(value?: google_protobuf_timestamp_pb.Timestamp): UpdateEventRequest;
+    getEnddatetime(): number | undefined;
+    setEnddatetime(value: number): UpdateEventRequest;
 
     hasLocation(): boolean;
     clearLocation(): void;
@@ -236,8 +246,8 @@ export class UpdateEventRequest extends jspb.Message {
 export namespace UpdateEventRequest {
     export type AsObject = {
         id: string,
-        startdatetime?: google_protobuf_timestamp_pb.Timestamp.AsObject,
-        enddatetime?: google_protobuf_timestamp_pb.Timestamp.AsObject,
+        startdatetime?: number,
+        enddatetime?: number,
         location?: string,
         eventtype: number,
         description?: string,

@@ -84,6 +84,17 @@ function deserialize_WHEventReply(buffer_arg) {
   return workhive_pb.WHEventReply.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
+function serialize_WHEventsReply(arg) {
+  if (!(arg instanceof workhive_pb.WHEventsReply)) {
+    throw new Error('Expected argument of type WHEventsReply');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_WHEventsReply(buffer_arg) {
+  return workhive_pb.WHEventsReply.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
 function serialize_google_protobuf_Empty(arg) {
   if (!(arg instanceof google_protobuf_empty_pb.Empty)) {
     throw new Error('Expected argument of type google.protobuf.Empty');
@@ -118,6 +129,17 @@ var WHEventService = exports.WHEventService = {
     requestDeserialize: deserialize_GetEventFilterRequest,
     responseSerialize: serialize_WHEventReply,
     responseDeserialize: deserialize_WHEventReply,
+  },
+  getEvents: {
+    path: '/WHEvent/GetEvents',
+    requestStream: false,
+    responseStream: false,
+    requestType: workhive_pb.GetEventFilterRequest,
+    responseType: workhive_pb.WHEventsReply,
+    requestSerialize: serialize_GetEventFilterRequest,
+    requestDeserialize: deserialize_GetEventFilterRequest,
+    responseSerialize: serialize_WHEventsReply,
+    responseDeserialize: deserialize_WHEventsReply,
   },
   getEvent: {
     path: '/WHEvent/GetEvent',

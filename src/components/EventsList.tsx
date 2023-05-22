@@ -1,13 +1,13 @@
 import { EventsListItem } from "@work-hive/components/EventsListItem";
-import { WHEventReply } from "@work-hive/grpc/workhive_pb";
+import { PlainEvent } from "@work-hive/models/PlainEvent";
 
 export type EventListProps = {
-  events: WHEventReply[];
+  events: PlainEvent[];
 };
 
 export function EventsList({ events }: EventListProps) {
   const eventListItems = events.map((ev) => (
-    <li key={ev.getId()}>
+    <li key={ev.id}>
       <EventsListItem event={ev} />
     </li>
   ));

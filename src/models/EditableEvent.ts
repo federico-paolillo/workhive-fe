@@ -1,4 +1,4 @@
-export interface EventToEdit {
+export interface EditableEvent {
   startDateTime: Date;
   endDateTime: Date;
   location: string;
