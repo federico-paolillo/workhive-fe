@@ -37,7 +37,7 @@ export function EventsListItem({ event }: EventProps) {
           </h1>
           <p className="mt-1 text-2xl font-bold">{EventType[event.eventType]}</p>
           <p className="mt-2 text-lg font-medium text-gray-500">{event.description}</p>
-          <a className="mt-2 text-sm font-medium text-gray-900">See More</a>
+          <a className="mt-2 text-sm font-medium text-gray-900">{"See More >"}</a>
       </div>
     </div>
   );
