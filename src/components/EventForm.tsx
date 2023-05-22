@@ -2,6 +2,7 @@
 
 import { FormEvent, useState } from "react";
 import { EventToEdit } from "@work-hive/models/EventToEdit";
+import { toYyyymmdd } from "@work-hive/utils/toYyyymmdd";
 
 export type EventFormProps = {
   event: EventToEdit;
@@ -9,23 +10,30 @@ export type EventFormProps = {
 };
 
 export function EventForm({ event, onSubmit }: EventFormProps) {
+  const startDateTimeString = toYyyymmdd(event.startDateTime);
+  const endDateTimeString = toYyyymmdd(event.endDateTime);
+
   //TODO: Awful, dirty, terrible. Quick. We can clean this mess up later
   const [location, setLocation] = useState(event.location);
   const [description, setDescription] = useState(event.description);
   const [eventType, setEventType] = useState(event.eventType);
   const [maxGuest, setMaxGuest] = useState(event.maxGuest);
-  const [startDateTime, setStartDateTime] = useState(event.startDateTime);
-  const [endDateTime, setEndDateTime] = useState(event.endDateTime);
+  const [startDateTime, setStartDateTime] = useState(startDateTimeString);
+  const [endDateTime, setEndDateTime] = useState(endDateTimeString);
 
   function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
+
+    const startDateTimeDate = new Date(startDateTime);
+    const endDateTimeDate = new Date(endDateTime);
+
     onSubmit({
       location,
       description,
       eventType,
       maxGuest,
-      startDateTime,
-      endDateTime,
+      startDateTime: startDateTimeDate,
+      endDateTime: endDateTimeDate,
     });
   }
 
@@ -36,8 +44,9 @@ export function EventForm({ event, onSubmit }: EventFormProps) {
         <input
           type="text"
           value={location}
+          required
           onChange={(evt) => setLocation(evt.target.value)}
-        ></input>
+        />
       </div>
       <div>
         <label>Description</label>
@@ -45,41 +54,45 @@ export function EventForm({ event, onSubmit }: EventFormProps) {
           type="text"
           value={description}
           onChange={(evt) => setDescription(evt.target.value)}
-        ></input>
+        />
       </div>
       <div>
         <label>Event Type</label>
         <input
           type="number"
+          required
           value={eventType}
           onChange={(evt) => setEventType(Number(evt.target.value))}
-        ></input>
+        />
       </div>
       <div>
         <label>Max. Guests</label>
         <input
           type="number"
+          required
           value={maxGuest}
           onChange={(evt) => setMaxGuest(Number(evt.target.value))}
-        ></input>
+        />
       </div>
       <div>
         <label>Start Date</label>
         <input
           type="date"
-          value={String(startDateTime)}
-          onChange={(evt) => setStartDateTime(new Date(evt.target.value))}
-        ></input>
+          required
+          value={startDateTime}
+          onChange={(evt) => setStartDateTime(evt.target.value)}
+        />
       </div>
       <div>
         <label>End Date</label>
         <input
           type="date"
-          value={String(endDateTime)}
-          onChange={(evt) => setEndDateTime(new Date(evt.target.value))}
-        ></input>
+          required
+          value={endDateTime}
+          onChange={(evt) => setEndDateTime(evt.target.value)}
+        />
       </div>
-      <input type="Submit">Save</input>
+      <button type="submit">Save</button>
     </form>
   );
 }
