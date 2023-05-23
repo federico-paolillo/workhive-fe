@@ -7,16 +7,20 @@ export type JoinButtonProps = {
   id: string;
 };
 
-export function JoinButton({id}: JoinButtonProps) {
+export function JoinButton({ id }: JoinButtonProps) {
+  const router = useRouter();
 
-    const router = useRouter();
+  async function join() {
+    await joinEvent(id);
+    router.push("/"); // Go back home for now
+  }
 
-    async function join() {
-        await joinEvent(id);
-        router.push("/"); // Go back home for now
-    }
-
-    return (
-        <button onClick={join}>Join</button>
-    )
+  return (
+    <button
+      className="mt-3 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded"
+      onClick={join}
+    >
+      Join me
+    </button>
+  );
 }

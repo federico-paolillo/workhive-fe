@@ -22,8 +22,9 @@ export function CreateEvent() {
     router.push("/"); // Head back home for now
   }
 
-  return <div 
-    className="max-w-sm bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
-    <EventForm event={eventToEdit} onSubmit={create} />
-  </div>
+  return (
+    <div className="max-w-sm bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+      <EventForm event={eventToEdit} onSubmit={create} />
+    </div>
+  );
 }

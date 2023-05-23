@@ -8,7 +8,6 @@ export default async function Home() {
   return (
     <main>
       <Link href="/new" />
-      <script src="../path/to/flowbite/dist/flowbite.min.js"></script>
       <EventsList events={events} />
     </main>
   );
