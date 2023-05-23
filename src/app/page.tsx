@@ -1,6 +1,8 @@
 import { fetchEvents } from "@work-hive/api/client";
 import { EventsList } from "@work-hive/components/EventsList";
-import Link from "next/link";
+
+export const revalidate = 0;
+export const dynamic = "force-dynamic";
 
 export default async function Home() {
   const events = await fetchEvents();

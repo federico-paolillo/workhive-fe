@@ -1,6 +1,6 @@
-import Image from "next/image";
 import "./global.css";
 import Link from "next/link";
+
 
 export const metadata = {
   title: "Work Hive",
