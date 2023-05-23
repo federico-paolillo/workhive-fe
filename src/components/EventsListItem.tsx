@@ -43,8 +43,9 @@ export function EventsListItem({ event }: EventProps) {
           className={style.event_image}
         />
       </div>
-      <div className="mt-4 block justify-between p-4">
-        <h1 className="text-xl text-gray-600 font-bold">{startDateString}</h1>
+      <div className="mt-4 block justify-between p-4 min-h-80 ">
+        <h1 className="text-xl text-gray-600 font-bold text-ellipsis overflow-hidden">{event.location}</h1>
+        <h1 className="text-xl text-gray-600 font-bold text-ellipsis">{startDateString}</h1>
         <p className="mt-1 text-2xl font-bold">{EventType[event.eventType]}</p>
         <p className="mt-2 text-lg font-medium text-gray-500">
           {event.description}
