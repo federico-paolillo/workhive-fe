@@ -38,9 +38,10 @@ export function EventForm({ event, onSubmit }: EventFormProps) {
   }
 
   return (
+  
     <form
       onSubmit={handleSubmit}
-      className="md:w-2/3 p-6 md:border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"
+      className="bg-colore-card md:w-2/3 p-6 md:border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"
     >
       <div className="mb-6">
         <label
@@ -122,7 +123,7 @@ export function EventForm({ event, onSubmit }: EventFormProps) {
           id="startDate"
           max={endDateTime}
           onChange={(evt) => setStartDateTime(evt.target.value)}
-          type="date"
+          type="datetime-local"
           className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
           placeholder="Start Date"
         />
@@ -139,14 +140,14 @@ export function EventForm({ event, onSubmit }: EventFormProps) {
           id="endDate"
           min={startDateTime}
           onChange={(evt) => setEndDateTime(evt.target.value)}
-          type="date"
+          type="datetime-local"
           className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
           placeholder="End Date"
         />
       </div>
 
       <button
-        className="mt-4 bg-orange-400 hover:bg-orange-500 text-white font-bold py-2 px-4 border border-orange-500 rounded-lg"
+        className="mt-4 bg-orange-400 hover:bg-orange-500 text-black font-bold py-2 px-4 border border-orange-500 rounded-lg"
         type="submit"
       >
         Save

@@ -1,6 +1,7 @@
 import Image from "next/image";
 import "./global.css";
 import Link from "next/link";
+import { Audiowide } from 'next/font/google';
 
 export const metadata = {
   title: "Work Hive",
@@ -10,7 +11,7 @@ export const metadata = {
 export type RootLayoutProps = {
   children: React.ReactNode;
 };
-
+export const audioWideFont = Audiowide({subsets: ['latin'], weight: '400' });
 export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html lang="en">
@@ -18,7 +19,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
         <nav className="border-b-2 border-b-black bg-colore-barra p-4 pl-32 text-white pr-32">
           <div className="flex flex-wrap items-center justify-between">
             <Link href={"/"} className="flex items-center">
-              <img src="images/logo5_rev2.png" className="h-16 mr-3" alt="Flowbite Logo" />
+              <img src="images/logo5_rev2.png" className="h-16 mr-3" alt="WorkHive logo" />
               {/* <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">
                 Work Hive
               </span> */}

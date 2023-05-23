@@ -1,5 +1,5 @@
 export function toYyyymmdd(date: Date) {
-  return date.toLocaleDateString("en-CA");
+  return date.toISOString();
 }
 
 export function getHours(date: Date): string {
