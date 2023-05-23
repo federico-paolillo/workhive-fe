@@ -15,8 +15,8 @@ module.exports = {
       },
     },
     colors: {
-      "colore-barra": "#b8dbd9",
-      "colore-sfondo": "#393e41",
+      "colore-barra": "#1D1D29",
+      "colore-sfondo": "#1D1D29",
       "colore-card": "#dfe2cf",
     },
   },
