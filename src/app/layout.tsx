@@ -1,7 +1,7 @@
-import Image from "next/image";
 import "./global.css";
 import Link from "next/link";
 import { Audiowide } from 'next/font/google';
+
 
 export const metadata = {
   title: "Work Hive",
