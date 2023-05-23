@@ -15,9 +15,9 @@ module.exports = {
       },
     },
     colors: {
-      "colore-barra": "#1D1D29",
-      "colore-sfondo": "#1D1D29",
-      "colore-card": "#dfe2cf",
+      "colore-barra": "#15152E",
+      "colore-sfondo": "#15152E",
+      "colore-card": "#FCECC9",
     },
   },
   plugins: [require("flowbite/plugin")],

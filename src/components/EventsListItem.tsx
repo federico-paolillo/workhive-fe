@@ -31,10 +31,10 @@ export function EventsListItem({ event }: EventProps) {
 
   return (
     <div
-      className="flex flex-col relative max-w-sm bg-colore-card border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700"
+      className="flex flex-col relative max-w-sm bg-colore-card border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700"
       key={event.id}
     >
-      <div className="min-h-80 aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-80">
+      <div className="min-h-80 aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-colore-card lg:aspect-none group-hover:opacity-75 lg:h-80">
         <Image
           alt="eventimage"
           src={getImageFromEventType(event.eventType)}
