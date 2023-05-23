@@ -27,5 +27,10 @@ export function EditEvent({ event }: EditEventProps) {
     router.push("/"); // Go back home for now
   }
 
-  return <EventForm event={editableEvent} onSubmit={edit} />;
+  return (
+    <div className="md:flex md:flex-col md:w-full md:h-full md:items-center">
+      <h2 className="text-2xl mb-4">Edit event</h2>
+      <EventForm event={editableEvent} onSubmit={edit} />
+    </div>
+  );
 }

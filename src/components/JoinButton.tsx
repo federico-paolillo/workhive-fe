@@ -17,7 +17,7 @@ export function JoinButton({ id }: JoinButtonProps) {
 
   return (
     <button
-      className="mt-3 bg-orange-400 hover:bg-orange-500 text-white font-bold py-2 px-4 border border-orange-600 rounded absolute bottom-2 right-2"
+      className="mt-3 bg-orange-400 hover:bg-orange-500 text-white font-bold py-2 px-4 border border-orange-600 rounded absolute bottom-2 right-4"
       onClick={join}
     >
       Join me

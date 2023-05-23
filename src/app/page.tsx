@@ -7,7 +7,6 @@ export default async function Home() {
 
   return (
     <main>
-      <Link href="/new" />
       <EventsList events={events} />
     </main>
   );
