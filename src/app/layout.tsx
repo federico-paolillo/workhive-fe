@@ -1,4 +1,4 @@
-import './global.css'
+import "./global.css";
 
 export const metadata = {
   title: "Work Hive",
@@ -12,7 +12,7 @@ export type RootLayoutProps = {
 export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body className="md:p-4">{children}</body>
     </html>
   );
 }

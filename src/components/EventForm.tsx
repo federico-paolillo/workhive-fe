@@ -38,7 +38,10 @@ export function EventForm({ event, onSubmit }: EventFormProps) {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="p-6">
+    <form
+      onSubmit={handleSubmit}
+      className="md:w-2/3 p-6 md:border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"
+    >
       <div className="mb-6">
         <label
           htmlFor="location"
@@ -62,32 +65,36 @@ export function EventForm({ event, onSubmit }: EventFormProps) {
         >
           Description
         </label>
-        <input
-          type="text"
+        <textarea
           id="description"
           value={description}
           onChange={(evt) => setDescription(evt.target.value)}
-          className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          className="h-48 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
           required
         />
       </div>
-      <div className="mb-6">
+      <div className="max-w-sm mb-6">
         <label
           htmlFor="number"
           className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
         >
           Event Type
         </label>
-        <input
-          type="number"
-          id="event_type"
-          value={eventType}
-          onChange={(evt) => setEventType(Number(evt.target.value))}
+        <select
           className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
           required
-        />
+          value={eventType}
+          onChange={(evt) => setEventType(Number(evt.target.value))}
+        >
+          <option value={1}>Work</option>
+          <option value={2}>Fun</option>
+          <option value={4}>Online</option>
+          <option value={8}>Babysitting</option>
+          <option value={4}>Online</option>
+          <option value={3}>Work & Fun</option>
+        </select>
       </div>
-      <div className="mb-6">
+      <div className="max-w-sm mb-6">
         <label
           htmlFor="guest"
           className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
@@ -103,7 +110,7 @@ export function EventForm({ event, onSubmit }: EventFormProps) {
           required
         />
       </div>
-      <div className="relative max-w-sm mb-6">
+      <div className="max-w-sm mb-6">
         <label
           htmlFor="startDate"
           className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
@@ -120,7 +127,7 @@ export function EventForm({ event, onSubmit }: EventFormProps) {
           placeholder="Start Date"
         />
       </div>
-      <div className="relative max-w-sm">
+      <div className="max-w-sm mb-6">
         <label
           htmlFor="endDate"
           className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
@@ -139,7 +146,7 @@ export function EventForm({ event, onSubmit }: EventFormProps) {
       </div>
 
       <button
-        className="w-full mt-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded-lg"
+        className="mt-4 bg-orange-400 hover:bg-orange-500 text-white font-bold py-2 px-4 border border-orange-500 rounded-lg"
         type="submit"
       >
         Save

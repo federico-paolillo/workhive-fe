@@ -23,7 +23,8 @@ export function CreateEvent() {
   }
 
   return (
-    <div className="max-w-sm bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+    <div className="md:flex md:flex-col md:w-full md:h-full md:items-center">
+      <h2 className="text-2xl mb-4">Create new event</h2>
       <EventForm event={eventToEdit} onSubmit={create} />
     </div>
   );
