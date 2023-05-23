@@ -8,12 +8,10 @@ export type EventListProps = {
 
 export function EventsList({ events }: EventListProps) {
   const eventListItems = events.map((ev) => (
-    <div key={ev.id}>
-      <EventsListItem event={ev} />
-    </div>
+    <EventsListItem event={ev} />
   ));
 
   return (
-    <div className={["flex", style.event_list].join(" ")}>{eventListItems}</div>
+    <div className={["grid grid grid-cols-1 md:grid-cols-4 2xl:grid-cols-5 gap-4", style.event_list].join(" ")}>{eventListItems}</div>
   );
 }
