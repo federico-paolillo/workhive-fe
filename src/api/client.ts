@@ -23,7 +23,7 @@ function toPlainEvent(whEventReply: WHEventReply): PlainEvent {
     id: whEventReply.getId(),
     description: whEventReply.getDescription(),
     location: whEventReply.getLocation(),
-    maxGuest: whEventReply.hasMaxguest() ? whEventReply.getMaxguest().value : 0,
+    maxGuest: whEventReply.getMaxguest() ?? 0,
     eventType: whEventReply.getEventtype(),
     startDateTime: whEventReply.getStartdatetime(),
     endDateTime: whEventReply.getEnddatetime(),

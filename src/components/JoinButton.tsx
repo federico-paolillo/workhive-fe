@@ -23,7 +23,7 @@ export function JoinButton({ id, maxGuest, guestCount }: JoinButtonProps) {
       onClick={join}
       disabled={maxGuest != 0 && guestCount >= maxGuest}
     >
-      Join me  `{guestCount}/{maxGuest}`
+      Join me {maxGuest != 0 && `${guestCount}/${maxGuest}`}
     </button>
   );
 }
