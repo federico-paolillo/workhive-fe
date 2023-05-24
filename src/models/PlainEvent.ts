@@ -6,6 +6,8 @@ export interface PlainEvent {
   eventType: number;
   description: string;
   maxGuest: number;
+  organizerId: string;
+  guestCount: number;
 }
 
 export enum EventType {

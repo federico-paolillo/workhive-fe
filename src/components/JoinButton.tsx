@@ -5,9 +5,11 @@ import { useRouter } from "next/navigation";
 
 export type JoinButtonProps = {
   id: string;
+  maxGuest: number;
+  guestCount: number;
 };
 
-export function JoinButton({ id }: JoinButtonProps) {
+export function JoinButton({ id, maxGuest, guestCount }: JoinButtonProps) {
   const router = useRouter();
 
   async function join() {
@@ -19,8 +21,9 @@ export function JoinButton({ id }: JoinButtonProps) {
     <button
       className="mt-3 bg-orange-400 hover:bg-orange-500 text-black font-bold py-2 px-4 border border-orange-600 rounded absolute bottom-2 right-4"
       onClick={join}
+      disabled={maxGuest != 0 && guestCount >= maxGuest}
     >
-      Join me
+      Join me  `{guestCount}/{maxGuest}`
     </button>
   );
 }

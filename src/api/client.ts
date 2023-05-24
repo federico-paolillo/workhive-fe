@@ -23,10 +23,12 @@ function toPlainEvent(whEventReply: WHEventReply): PlainEvent {
     id: whEventReply.getId(),
     description: whEventReply.getDescription(),
     location: whEventReply.getLocation(),
-    maxGuest: 0,
+    maxGuest: whEventReply.hasMaxguest() ? whEventReply.getMaxguest().value : 0,
     eventType: whEventReply.getEventtype(),
     startDateTime: whEventReply.getStartdatetime(),
     endDateTime: whEventReply.getEnddatetime(),
+    organizerId: whEventReply.getOrganizerid(),
+    guestCount: whEventReply.getGuestidsList().length
   };
 }
 
