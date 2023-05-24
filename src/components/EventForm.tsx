@@ -10,8 +10,8 @@ export type EventFormProps = {
 };
 
 export function EventForm({ event, onSubmit }: EventFormProps) {
-  const startDateTimeString = toYyyymmdd(event.startDateTime);
-  const endDateTimeString = toYyyymmdd(event.endDateTime);
+  const startDateTimeString = toYyyymmdd(event.startDateTime).slice(0, -5); //This is just...horrifying
+  const endDateTimeString = toYyyymmdd(event.endDateTime).slice(0, -5);
 
   //TODO: Awful, dirty, terrible. Quick. We can clean this mess up later
   const [location, setLocation] = useState(event.location);
@@ -38,7 +38,6 @@ export function EventForm({ event, onSubmit }: EventFormProps) {
   }
 
   return (
-  
     <form
       onSubmit={handleSubmit}
       className="bg-colore-card md:w-2/3 p-6 md:border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"
