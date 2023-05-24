@@ -53,7 +53,7 @@ export function EventsListItem({ event }: EventProps) {
       </div>
       <div className="mt-8 block pt-6">
         {(event.organizerId == "b4b117aa-3ad8-4d13-802a-b8bad0dc8e95") && <EditButton id={event.id} />}
-        {(event.organizerId != "b4b117aa-3ad8-4d13-802a-b8bad0dc8e96") && <JoinButton id={event.id} maxGuest={event.maxGuest} guestCount={event.guestCount} />}
+        {(event.organizerId != "b4b117aa-3ad8-4d13-802a-b8bad0dc8e95") && <JoinButton id={event.id} maxGuest={event.maxGuest} guestCount={event.guestCount} />}
       </div>
     </div>
   );
