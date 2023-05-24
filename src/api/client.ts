@@ -4,6 +4,7 @@ import * as grpc from "@grpc/grpc-js";
 import { WHEventClient } from "@work-hive/grpc/workhive_grpc_pb";
 import {
   CreateEventRequest,
+  CreateFakeEventRequest,
   GetEventFilterRequest,
   GetEventRequest,
   JoinEventRequest,
@@ -28,7 +29,7 @@ function toPlainEvent(whEventReply: WHEventReply): PlainEvent {
     startDateTime: whEventReply.getStartdatetime(),
     endDateTime: whEventReply.getEnddatetime(),
     organizerId: whEventReply.getOrganizerid(),
-    guestCount: whEventReply.getGuestidsList().length
+    guestCount: whEventReply.getGuestidsList().length,
   };
 }
 
@@ -120,6 +121,22 @@ export async function joinEvent(id: string): Promise<void> {
 
   return new Promise((resolve, reject) => {
     workhiveClient.joinEvent(joinEventRequest, (error, _) => {
+      if (error) {
+        reject(error);
+      } else {
+        resolve();
+      }
+    });
+  });
+}
+
+export async function createFakeEvent(id: string): Promise<void> {
+  const createFakeEventRequest = new CreateFakeEventRequest();
+
+  createFakeEventRequest.setOrganizerid("");
+
+  return new Promise((resolve, reject) => {
+    workhiveClient.createFakeEvent(createFakeEventRequest, (error, _) => {
       if (error) {
         reject(error);
       } else {

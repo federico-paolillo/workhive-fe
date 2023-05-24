@@ -18,6 +18,17 @@ function deserialize_CreateEventRequest(buffer_arg) {
   return workhive_pb.CreateEventRequest.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
+function serialize_CreateFakeEventRequest(arg) {
+  if (!(arg instanceof workhive_pb.CreateFakeEventRequest)) {
+    throw new Error('Expected argument of type CreateFakeEventRequest');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_CreateFakeEventRequest(buffer_arg) {
+  return workhive_pb.CreateFakeEventRequest.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
 function serialize_DeleteEventRequest(arg) {
   if (!(arg instanceof workhive_pb.DeleteEventRequest)) {
     throw new Error('Expected argument of type DeleteEventRequest');
@@ -184,6 +195,17 @@ var WHEventService = exports.WHEventService = {
     requestDeserialize: deserialize_JoinEventRequest,
     responseSerialize: serialize_google_protobuf_Empty,
     responseDeserialize: deserialize_google_protobuf_Empty,
+  },
+  createFakeEvent: {
+    path: '/WHEvent/CreateFakeEvent',
+    requestStream: false,
+    responseStream: false,
+    requestType: workhive_pb.CreateFakeEventRequest,
+    responseType: workhive_pb.WHEventReply,
+    requestSerialize: serialize_CreateFakeEventRequest,
+    requestDeserialize: deserialize_CreateFakeEventRequest,
+    responseSerialize: serialize_WHEventReply,
+    responseDeserialize: deserialize_WHEventReply,
   },
 };
 

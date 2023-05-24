@@ -71,6 +71,26 @@ export namespace WHEventsReply {
     }
 }
 
+export class CreateFakeEventRequest extends jspb.Message { 
+    getOrganizerid(): string;
+    setOrganizerid(value: string): CreateFakeEventRequest;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): CreateFakeEventRequest.AsObject;
+    static toObject(includeInstance: boolean, msg: CreateFakeEventRequest): CreateFakeEventRequest.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: CreateFakeEventRequest, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): CreateFakeEventRequest;
+    static deserializeBinaryFromReader(message: CreateFakeEventRequest, reader: jspb.BinaryReader): CreateFakeEventRequest;
+}
+
+export namespace CreateFakeEventRequest {
+    export type AsObject = {
+        organizerid: string,
+    }
+}
+
 export class GetEventFilterRequest extends jspb.Message { 
 
     hasStartdatetime(): boolean;

@@ -18,6 +18,7 @@ interface IWHEventService extends grpc.ServiceDefinition<grpc.UntypedServiceImpl
     updateEvent: IWHEventService_IUpdateEvent;
     deleteEvent: IWHEventService_IDeleteEvent;
     joinEvent: IWHEventService_IJoinEvent;
+    createFakeEvent: IWHEventService_ICreateFakeEvent;
 }
 
 interface IWHEventService_ICreateEvent extends grpc.MethodDefinition<workhive_pb.CreateEventRequest, workhive_pb.WHEventReply> {
@@ -83,6 +84,15 @@ interface IWHEventService_IJoinEvent extends grpc.MethodDefinition<workhive_pb.J
     responseSerialize: grpc.serialize<google_protobuf_empty_pb.Empty>;
     responseDeserialize: grpc.deserialize<google_protobuf_empty_pb.Empty>;
 }
+interface IWHEventService_ICreateFakeEvent extends grpc.MethodDefinition<workhive_pb.CreateFakeEventRequest, workhive_pb.WHEventReply> {
+    path: "/WHEvent/CreateFakeEvent";
+    requestStream: false;
+    responseStream: false;
+    requestSerialize: grpc.serialize<workhive_pb.CreateFakeEventRequest>;
+    requestDeserialize: grpc.deserialize<workhive_pb.CreateFakeEventRequest>;
+    responseSerialize: grpc.serialize<workhive_pb.WHEventReply>;
+    responseDeserialize: grpc.deserialize<workhive_pb.WHEventReply>;
+}
 
 export const WHEventService: IWHEventService;
 
@@ -94,6 +104,7 @@ export interface IWHEventServer extends grpc.UntypedServiceImplementation {
     updateEvent: grpc.handleUnaryCall<workhive_pb.UpdateEventRequest, workhive_pb.WHEventReply>;
     deleteEvent: grpc.handleUnaryCall<workhive_pb.DeleteEventRequest, google_protobuf_empty_pb.Empty>;
     joinEvent: grpc.handleUnaryCall<workhive_pb.JoinEventRequest, google_protobuf_empty_pb.Empty>;
+    createFakeEvent: grpc.handleUnaryCall<workhive_pb.CreateFakeEventRequest, workhive_pb.WHEventReply>;
 }
 
 export interface IWHEventClient {
@@ -117,6 +128,9 @@ export interface IWHEventClient {
     joinEvent(request: workhive_pb.JoinEventRequest, callback: (error: grpc.ServiceError | null, response: google_protobuf_empty_pb.Empty) => void): grpc.ClientUnaryCall;
     joinEvent(request: workhive_pb.JoinEventRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: google_protobuf_empty_pb.Empty) => void): grpc.ClientUnaryCall;
     joinEvent(request: workhive_pb.JoinEventRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: google_protobuf_empty_pb.Empty) => void): grpc.ClientUnaryCall;
+    createFakeEvent(request: workhive_pb.CreateFakeEventRequest, callback: (error: grpc.ServiceError | null, response: workhive_pb.WHEventReply) => void): grpc.ClientUnaryCall;
+    createFakeEvent(request: workhive_pb.CreateFakeEventRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: workhive_pb.WHEventReply) => void): grpc.ClientUnaryCall;
+    createFakeEvent(request: workhive_pb.CreateFakeEventRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: workhive_pb.WHEventReply) => void): grpc.ClientUnaryCall;
 }
 
 export class WHEventClient extends grpc.Client implements IWHEventClient {
@@ -141,4 +155,7 @@ export class WHEventClient extends grpc.Client implements IWHEventClient {
     public joinEvent(request: workhive_pb.JoinEventRequest, callback: (error: grpc.ServiceError | null, response: google_protobuf_empty_pb.Empty) => void): grpc.ClientUnaryCall;
     public joinEvent(request: workhive_pb.JoinEventRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: google_protobuf_empty_pb.Empty) => void): grpc.ClientUnaryCall;
     public joinEvent(request: workhive_pb.JoinEventRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: google_protobuf_empty_pb.Empty) => void): grpc.ClientUnaryCall;
+    public createFakeEvent(request: workhive_pb.CreateFakeEventRequest, callback: (error: grpc.ServiceError | null, response: workhive_pb.WHEventReply) => void): grpc.ClientUnaryCall;
+    public createFakeEvent(request: workhive_pb.CreateFakeEventRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: workhive_pb.WHEventReply) => void): grpc.ClientUnaryCall;
+    public createFakeEvent(request: workhive_pb.CreateFakeEventRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: workhive_pb.WHEventReply) => void): grpc.ClientUnaryCall;
 }
