@@ -139,6 +139,10 @@ export class WHEventReply extends jspb.Message {
     getGuestidsList(): Array<string>;
     setGuestidsList(value: Array<string>): WHEventReply;
     addGuestids(value: string, index?: number): string;
+    clearAttributesList(): void;
+    getAttributesList(): Array<string>;
+    setAttributesList(value: Array<string>): WHEventReply;
+    addAttributes(value: string, index?: number): string;
 
     serializeBinary(): Uint8Array;
     toObject(includeInstance?: boolean): WHEventReply.AsObject;
@@ -161,6 +165,7 @@ export namespace WHEventReply {
         description: string,
         eventtype: number,
         guestidsList: Array<string>,
+        attributesList: Array<string>,
     }
 }
 
@@ -180,6 +185,10 @@ export class CreateEventRequest extends jspb.Message {
     clearMaxguest(): void;
     getMaxguest(): number | undefined;
     setMaxguest(value: number): CreateEventRequest;
+    clearAttributesList(): void;
+    getAttributesList(): Array<string>;
+    setAttributesList(value: Array<string>): CreateEventRequest;
+    addAttributes(value: string, index?: number): string;
 
     serializeBinary(): Uint8Array;
     toObject(includeInstance?: boolean): CreateEventRequest.AsObject;
@@ -199,6 +208,7 @@ export namespace CreateEventRequest {
         eventtype: number,
         description: string,
         maxguest?: number,
+        attributesList: Array<string>,
     }
 }
 
@@ -232,6 +242,10 @@ export class UpdateEventRequest extends jspb.Message {
     clearMaxguest(): void;
     getMaxguest(): number | undefined;
     setMaxguest(value: number): UpdateEventRequest;
+    clearAttributesList(): void;
+    getAttributesList(): Array<string>;
+    setAttributesList(value: Array<string>): UpdateEventRequest;
+    addAttributes(value: string, index?: number): string;
 
     serializeBinary(): Uint8Array;
     toObject(includeInstance?: boolean): UpdateEventRequest.AsObject;
@@ -252,6 +266,7 @@ export namespace UpdateEventRequest {
         eventtype: number,
         description?: string,
         maxguest?: number,
+        attributesList: Array<string>,
     }
 }
 

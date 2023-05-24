@@ -151,7 +151,7 @@ if (goog.DEBUG && !COMPILED) {
  * @constructor
  */
 proto.CreateEventRequest = function(opt_data) {
-  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
+  jspb.Message.initialize(this, opt_data, 0, -1, proto.CreateEventRequest.repeatedFields_, null);
 };
 goog.inherits(proto.CreateEventRequest, jspb.Message);
 if (goog.DEBUG && !COMPILED) {
@@ -172,7 +172,7 @@ if (goog.DEBUG && !COMPILED) {
  * @constructor
  */
 proto.UpdateEventRequest = function(opt_data) {
-  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
+  jspb.Message.initialize(this, opt_data, 0, -1, proto.UpdateEventRequest.repeatedFields_, null);
 };
 goog.inherits(proto.UpdateEventRequest, jspb.Message);
 if (goog.DEBUG && !COMPILED) {
@@ -951,7 +951,7 @@ proto.GetEventFilterRequest.prototype.setEventtype = function(value) {
  * @private {!Array<number>}
  * @const
  */
-proto.WHEventReply.repeatedFields_ = [9];
+proto.WHEventReply.repeatedFields_ = [9,10];
 
 
 
@@ -992,7 +992,8 @@ proto.WHEventReply.toObject = function(includeInstance, msg) {
     maxguest: (f = msg.getMaxguest()) && google_protobuf_wrappers_pb.Int32Value.toObject(includeInstance, f),
     description: jspb.Message.getFieldWithDefault(msg, 7, ""),
     eventtype: jspb.Message.getFieldWithDefault(msg, 8, 0),
-    guestidsList: (f = jspb.Message.getRepeatedField(msg, 9)) == null ? undefined : f
+    guestidsList: (f = jspb.Message.getRepeatedField(msg, 9)) == null ? undefined : f,
+    attributesList: (f = jspb.Message.getRepeatedField(msg, 10)) == null ? undefined : f
   };
 
   if (includeInstance) {
@@ -1065,6 +1066,10 @@ proto.WHEventReply.deserializeBinaryFromReader = function(msg, reader) {
     case 9:
       var value = /** @type {string} */ (reader.readString());
       msg.addGuestids(value);
+      break;
+    case 10:
+      var value = /** @type {string} */ (reader.readString());
+      msg.addAttributes(value);
       break;
     default:
       reader.skipField();
@@ -1156,6 +1161,13 @@ proto.WHEventReply.serializeBinaryToWriter = function(message, writer) {
   if (f.length > 0) {
     writer.writeRepeatedString(
       9,
+      f
+    );
+  }
+  f = message.getAttributesList();
+  if (f.length > 0) {
+    writer.writeRepeatedString(
+      10,
       f
     );
   }
@@ -1362,6 +1374,50 @@ proto.WHEventReply.prototype.clearGuestidsList = function() {
 };
 
 
+/**
+ * repeated string attributes = 10;
+ * @return {!Array<string>}
+ */
+proto.WHEventReply.prototype.getAttributesList = function() {
+  return /** @type {!Array<string>} */ (jspb.Message.getRepeatedField(this, 10));
+};
+
+
+/**
+ * @param {!Array<string>} value
+ * @return {!proto.WHEventReply} returns this
+ */
+proto.WHEventReply.prototype.setAttributesList = function(value) {
+  return jspb.Message.setField(this, 10, value || []);
+};
+
+
+/**
+ * @param {string} value
+ * @param {number=} opt_index
+ * @return {!proto.WHEventReply} returns this
+ */
+proto.WHEventReply.prototype.addAttributes = function(value, opt_index) {
+  return jspb.Message.addToRepeatedField(this, 10, value, opt_index);
+};
+
+
+/**
+ * Clears the list making it empty but non-null.
+ * @return {!proto.WHEventReply} returns this
+ */
+proto.WHEventReply.prototype.clearAttributesList = function() {
+  return this.setAttributesList([]);
+};
+
+
+
+/**
+ * List of repeated fields within this message type.
+ * @private {!Array<number>}
+ * @const
+ */
+proto.CreateEventRequest.repeatedFields_ = [7];
 
 
 
@@ -1399,7 +1455,8 @@ proto.CreateEventRequest.toObject = function(includeInstance, msg) {
     location: jspb.Message.getFieldWithDefault(msg, 3, ""),
     eventtype: jspb.Message.getFieldWithDefault(msg, 4, 0),
     description: jspb.Message.getFieldWithDefault(msg, 5, ""),
-    maxguest: jspb.Message.getFieldWithDefault(msg, 6, 0)
+    maxguest: jspb.Message.getFieldWithDefault(msg, 6, 0),
+    attributesList: (f = jspb.Message.getRepeatedField(msg, 7)) == null ? undefined : f
   };
 
   if (includeInstance) {
@@ -1459,6 +1516,10 @@ proto.CreateEventRequest.deserializeBinaryFromReader = function(msg, reader) {
     case 6:
       var value = /** @type {number} */ (reader.readInt32());
       msg.setMaxguest(value);
+      break;
+    case 7:
+      var value = /** @type {string} */ (reader.readString());
+      msg.addAttributes(value);
       break;
     default:
       reader.skipField();
@@ -1528,6 +1589,13 @@ proto.CreateEventRequest.serializeBinaryToWriter = function(message, writer) {
   if (f != null) {
     writer.writeInt32(
       6,
+      f
+    );
+  }
+  f = message.getAttributesList();
+  if (f.length > 0) {
+    writer.writeRepeatedString(
+      7,
       f
     );
   }
@@ -1660,6 +1728,50 @@ proto.CreateEventRequest.prototype.hasMaxguest = function() {
 };
 
 
+/**
+ * repeated string attributes = 7;
+ * @return {!Array<string>}
+ */
+proto.CreateEventRequest.prototype.getAttributesList = function() {
+  return /** @type {!Array<string>} */ (jspb.Message.getRepeatedField(this, 7));
+};
+
+
+/**
+ * @param {!Array<string>} value
+ * @return {!proto.CreateEventRequest} returns this
+ */
+proto.CreateEventRequest.prototype.setAttributesList = function(value) {
+  return jspb.Message.setField(this, 7, value || []);
+};
+
+
+/**
+ * @param {string} value
+ * @param {number=} opt_index
+ * @return {!proto.CreateEventRequest} returns this
+ */
+proto.CreateEventRequest.prototype.addAttributes = function(value, opt_index) {
+  return jspb.Message.addToRepeatedField(this, 7, value, opt_index);
+};
+
+
+/**
+ * Clears the list making it empty but non-null.
+ * @return {!proto.CreateEventRequest} returns this
+ */
+proto.CreateEventRequest.prototype.clearAttributesList = function() {
+  return this.setAttributesList([]);
+};
+
+
+
+/**
+ * List of repeated fields within this message type.
+ * @private {!Array<number>}
+ * @const
+ */
+proto.UpdateEventRequest.repeatedFields_ = [7];
 
 
 
@@ -1698,7 +1810,8 @@ proto.UpdateEventRequest.toObject = function(includeInstance, msg) {
     location: jspb.Message.getFieldWithDefault(msg, 4, ""),
     eventtype: jspb.Message.getFieldWithDefault(msg, 5, 0),
     description: jspb.Message.getFieldWithDefault(msg, 8, ""),
-    maxguest: jspb.Message.getFieldWithDefault(msg, 6, 0)
+    maxguest: jspb.Message.getFieldWithDefault(msg, 6, 0),
+    attributesList: (f = jspb.Message.getRepeatedField(msg, 7)) == null ? undefined : f
   };
 
   if (includeInstance) {
@@ -1762,6 +1875,10 @@ proto.UpdateEventRequest.deserializeBinaryFromReader = function(msg, reader) {
     case 6:
       var value = /** @type {number} */ (reader.readInt32());
       msg.setMaxguest(value);
+      break;
+    case 7:
+      var value = /** @type {string} */ (reader.readString());
+      msg.addAttributes(value);
       break;
     default:
       reader.skipField();
@@ -1838,6 +1955,13 @@ proto.UpdateEventRequest.serializeBinaryToWriter = function(message, writer) {
   if (f != null) {
     writer.writeInt32(
       6,
+      f
+    );
+  }
+  f = message.getAttributesList();
+  if (f.length > 0) {
+    writer.writeRepeatedString(
+      7,
       f
     );
   }
@@ -2057,6 +2181,43 @@ proto.UpdateEventRequest.prototype.clearMaxguest = function() {
  */
 proto.UpdateEventRequest.prototype.hasMaxguest = function() {
   return jspb.Message.getField(this, 6) != null;
+};
+
+
+/**
+ * repeated string attributes = 7;
+ * @return {!Array<string>}
+ */
+proto.UpdateEventRequest.prototype.getAttributesList = function() {
+  return /** @type {!Array<string>} */ (jspb.Message.getRepeatedField(this, 7));
+};
+
+
+/**
+ * @param {!Array<string>} value
+ * @return {!proto.UpdateEventRequest} returns this
+ */
+proto.UpdateEventRequest.prototype.setAttributesList = function(value) {
+  return jspb.Message.setField(this, 7, value || []);
+};
+
+
+/**
+ * @param {string} value
+ * @param {number=} opt_index
+ * @return {!proto.UpdateEventRequest} returns this
+ */
+proto.UpdateEventRequest.prototype.addAttributes = function(value, opt_index) {
+  return jspb.Message.addToRepeatedField(this, 7, value, opt_index);
+};
+
+
+/**
+ * Clears the list making it empty but non-null.
+ * @return {!proto.UpdateEventRequest} returns this
+ */
+proto.UpdateEventRequest.prototype.clearAttributesList = function() {
+  return this.setAttributesList([]);
 };
 
 
