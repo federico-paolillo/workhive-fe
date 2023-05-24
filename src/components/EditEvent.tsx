@@ -5,7 +5,7 @@ import { PlainEvent } from "@work-hive/models/PlainEvent";
 import { useRouter } from "next/navigation";
 import { EventForm } from "@work-hive/components/EventForm";
 import { updateEvent } from "@work-hive/api/client";
-import { audioWideFont } from "@work-hive/app/layout";
+import { audioWideFont } from "@work-hive/fonts";
 
 
 export type EditEventProps = {

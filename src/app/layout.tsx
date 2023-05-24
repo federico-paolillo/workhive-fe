@@ -1,7 +1,6 @@
 import "./global.css";
 import Link from "next/link";
-import { Audiowide } from 'next/font/google';
-
+import Image from "next/image";
 
 export const metadata = {
   title: "Work Hive",
@@ -11,7 +10,7 @@ export const metadata = {
 export type RootLayoutProps = {
   children: React.ReactNode;
 };
-export const audioWideFont = Audiowide({subsets: ['latin'], weight: '400' });
+
 export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html lang="en">
@@ -19,10 +18,13 @@ export default function RootLayout({ children }: RootLayoutProps) {
         <nav className="border-b-2 border-b-black bg-colore-barra p-4 pl-32 text-white pr-32">
           <div className="flex flex-wrap items-center justify-between">
             <Link href={"/"} className="flex items-center">
-              <img src="/images/logo5_rev2.png" className="h-16 mr-3" alt="WorkHive logo" />
-              {/* <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">
-                Work Hive
-              </span> */}
+              <Image
+                src="/images/logo5_rev2.png"
+                className="mr-3"
+                alt="WorkHive logo"
+                width={702}
+                height={97}
+              />
             </Link>
             <div className="hidden w-full md:block md:w-auto">
               <ul className="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
@@ -37,7 +39,9 @@ export default function RootLayout({ children }: RootLayoutProps) {
             </div>
           </div>
         </nav>
-        <div className="md:p-8 md:pl-32 bg-colore-sfondo h-screen">{children}</div>
+        <div className="md:p-8 md:pl-32 bg-colore-sfondo h-screen">
+          {children}
+        </div>
       </body>
     </html>
   );
