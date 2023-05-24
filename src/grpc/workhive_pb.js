@@ -989,7 +989,7 @@ proto.WHEventReply.toObject = function(includeInstance, msg) {
     startdatetime: jspb.Message.getFieldWithDefault(msg, 3, 0),
     enddatetime: jspb.Message.getFieldWithDefault(msg, 4, 0),
     location: jspb.Message.getFieldWithDefault(msg, 5, ""),
-    maxguest: (f = msg.getMaxguest()) && google_protobuf_wrappers_pb.Int32Value.toObject(includeInstance, f),
+    maxguest: jspb.Message.getFieldWithDefault(msg, 6, 0),
     description: jspb.Message.getFieldWithDefault(msg, 7, ""),
     eventtype: jspb.Message.getFieldWithDefault(msg, 8, 0),
     guestidsList: (f = jspb.Message.getRepeatedField(msg, 9)) == null ? undefined : f,
@@ -1051,8 +1051,7 @@ proto.WHEventReply.deserializeBinaryFromReader = function(msg, reader) {
       msg.setLocation(value);
       break;
     case 6:
-      var value = new google_protobuf_wrappers_pb.Int32Value;
-      reader.readMessage(value,google_protobuf_wrappers_pb.Int32Value.deserializeBinaryFromReader);
+      var value = /** @type {number} */ (reader.readInt32());
       msg.setMaxguest(value);
       break;
     case 7:
@@ -1135,12 +1134,11 @@ proto.WHEventReply.serializeBinaryToWriter = function(message, writer) {
       f
     );
   }
-  f = message.getMaxguest();
+  f = /** @type {number} */ (jspb.Message.getField(message, 6));
   if (f != null) {
-    writer.writeMessage(
+    writer.writeInt32(
       6,
-      f,
-      google_protobuf_wrappers_pb.Int32Value.serializeBinaryToWriter
+      f
     );
   }
   f = message.getDescription();
@@ -1265,30 +1263,29 @@ proto.WHEventReply.prototype.setLocation = function(value) {
 
 
 /**
- * optional google.protobuf.Int32Value maxGuest = 6;
- * @return {?proto.google.protobuf.Int32Value}
+ * optional int32 maxGuest = 6;
+ * @return {number}
  */
 proto.WHEventReply.prototype.getMaxguest = function() {
-  return /** @type{?proto.google.protobuf.Int32Value} */ (
-    jspb.Message.getWrapperField(this, google_protobuf_wrappers_pb.Int32Value, 6));
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 6, 0));
 };
 
 
 /**
- * @param {?proto.google.protobuf.Int32Value|undefined} value
+ * @param {number} value
  * @return {!proto.WHEventReply} returns this
-*/
+ */
 proto.WHEventReply.prototype.setMaxguest = function(value) {
-  return jspb.Message.setWrapperField(this, 6, value);
+  return jspb.Message.setField(this, 6, value);
 };
 
 
 /**
- * Clears the message field making it undefined.
+ * Clears the field making it undefined.
  * @return {!proto.WHEventReply} returns this
  */
 proto.WHEventReply.prototype.clearMaxguest = function() {
-  return this.setMaxguest(undefined);
+  return jspb.Message.setField(this, 6, undefined);
 };
 
 

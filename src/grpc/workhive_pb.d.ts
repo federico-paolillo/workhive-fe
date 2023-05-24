@@ -129,8 +129,8 @@ export class WHEventReply extends jspb.Message {
 
     hasMaxguest(): boolean;
     clearMaxguest(): void;
-    getMaxguest(): google_protobuf_wrappers_pb.Int32Value | undefined;
-    setMaxguest(value?: google_protobuf_wrappers_pb.Int32Value): WHEventReply;
+    getMaxguest(): number | undefined;
+    setMaxguest(value: number): WHEventReply;
     getDescription(): string;
     setDescription(value: string): WHEventReply;
     getEventtype(): number;
@@ -161,7 +161,7 @@ export namespace WHEventReply {
         startdatetime: number,
         enddatetime: number,
         location: string,
-        maxguest?: google_protobuf_wrappers_pb.Int32Value.AsObject,
+        maxguest?: number,
         description: string,
         eventtype: number,
         guestidsList: Array<string>,
